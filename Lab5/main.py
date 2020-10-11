@@ -22,7 +22,7 @@ def input_value(value_name = None, to_int = True):
     
 def dump(my_room, filename = None):
     if filename is None:
-        filename = input_value('Input filename:')
+        filename = input_value('Input filename:', to_int = False)
     try: 
         filename = os.path.dirname(os.path.realpath(__file__)) + os.sep + filename
         with open(filename, 'wb+') as file:
@@ -35,7 +35,7 @@ def dump(my_room, filename = None):
 def load_room(filename = None):
     try:
         if filename is None:
-            filename = input_value('Input filename:')
+            filename = input_value('Input filename:', to_int = False)
         filename = os.path.dirname(os.path.realpath(__file__)) + os.sep + filename
         with open(filename, 'rb') as file:
             my_room = pickle.load(file)
@@ -155,7 +155,7 @@ def save_room():
     print('Bathroom - {}'.format(Bathroom.CODE))
     print('LivingRoom - {}'.format(LivingRoom.CODE))
     print('Type "{}" to go to main menu'.format(EXIT_CODE))
-    code = input_value()
+    code = input_value(to_int = False)
     
     if code is Room.CODE:
         save_room()
