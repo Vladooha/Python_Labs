@@ -4,7 +4,7 @@ EXIT_CODE = 'q'
 START_CODE = 's'
 ITEM_DELIMITER = ' '
 
-def find_intersection(list_of_lists):
+def find_intersection(*list_of_lists):
     print('Finding intersection of:')
     for index in range(len(list_of_lists)):
         print('#{} {}'.format(index, list_of_lists[index]))
@@ -21,7 +21,6 @@ def find_intersection(list_of_lists):
 
     return intersec_buffer
     
-print('Monotone list checker! Print "q" to exit.')
 list_buffer = []
 while True:
     try:
@@ -31,7 +30,7 @@ while True:
             break
         elif data == START_CODE:
             begin_time = time.time()
-            intersection = find_intersection(list_buffer)
+            intersection = find_intersection(*list_buffer)
             end_time = time.time()
             total_time = end_time - begin_time
             
